@@ -25,7 +25,7 @@ jobs:
     needs: ecr_login
     runs-on: ubuntu-latest
     container:
-      image: 712324673482.dkr.ecr.us-east-1.amazonaws.com/gitops-argocd:latest
+      image: 443247825008.dkr.ecr.us-east-1.amazonaws.com/gitops-argocd:latest
       credentials:
         username: AWS
         password: ${{ needs.ecr_login.outputs.ecr_password }}
