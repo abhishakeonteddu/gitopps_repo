@@ -38,7 +38,16 @@ jobs:
           github_token: ${{ secrets.GH_API_ACCESS_TOKEN }}
           secret_name: ECR_PASSWORD
           secret_value: ${{ steps.ecr-password.outputs.password }} 
-      
+      - name: Configure Kubectl
+        uses: azure/setup-kubectl@v2.0
+        with:
+          version: 'v1.23.6'
+        id: install
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: ${{ matrix.region }}
+          role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
 
 
 
