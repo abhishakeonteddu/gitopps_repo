@@ -53,6 +53,7 @@ jobs:
         shell: bash
         run: |
           aws eks update-kubeconfig --name ${{ secrets.AWS_CLUSTER_NAME }} --region=${{ secrets.AWS_REGION }}
+          kubectl get ns
 
 
 
