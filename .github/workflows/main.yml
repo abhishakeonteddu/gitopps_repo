@@ -47,7 +47,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-region: ${{ secrets.AWS_REGION}}
-          role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
+#          role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
 
       - name: list namepsace
         run: kubectl get ns
