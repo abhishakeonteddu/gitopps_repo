@@ -2,10 +2,10 @@ name: Refresh ECR docker password
 
 on:
   # For manual dispatch
-  workflow_dispatch:
+  # workflow_dispatch:
   schedule:
     # Run every 5 min
-    - cron: '*/5 * * * *'
+    - cron: '*/2 * * * *'
  #  push:
  #   branches:
  #     - 'main'
