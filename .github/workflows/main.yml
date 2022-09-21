@@ -38,6 +38,14 @@ jobs:
           github_token: ${{ secrets.GH_API_ACCESS_TOKEN }}
           secret_name: ECR_PASSWORD
           secret_value: ${{ steps.ecr-password.outputs.password }} 
+      - name: create secret in kubernets
+        uses: azure/k8s-create-secret@v2
+        with:
+          namespace: 'default'
+          secret-type: 'generic'
+          secret-name: azure-storage
+          data: ${{ secrets.ECR_PASSWORD }}
+      
 
 
 
