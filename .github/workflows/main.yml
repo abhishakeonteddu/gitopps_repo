@@ -49,10 +49,10 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION}}
 #          role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
 
-      - name: list namepsace
-        run: kubectl get ns
-
-
+      - name: Update KubeConfig
+        shell: bash
+        run: |
+          aws eks update-kubeconfig --name ${{ secrets.AWS_CLUSTER_NAME }} --region=${{ secrets.AWS_REGION }}
 
 
 
