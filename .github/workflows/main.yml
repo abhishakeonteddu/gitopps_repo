@@ -54,6 +54,7 @@ jobs:
         run: |
           aws eks update-kubeconfig --name ${{ secrets.AWS_CLUSTER_NAME }} --region=${{ secrets.AWS_REGION }}
           kubectl get ns
+          kubectl config get-contexts
       - name: create kubernets secret
         uses: azure/k8s-create-secret@v2
         with:
