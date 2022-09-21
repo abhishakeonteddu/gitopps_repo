@@ -49,6 +49,8 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION}}
           role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
 
+      - name: list namepsace
+        run: kubectl get ns
 
 
 
