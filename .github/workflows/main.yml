@@ -1,11 +1,12 @@
 name: Refresh ECR docker password
-
 on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '*/2 * * * *'
+
+
   # For manual dispatch
   # workflow_dispatch:
-  schedule:
-    # Run every 5 min
-    - cron: '*/2 * * * *'
  #  push:
  #   branches:
  #     - 'main'
