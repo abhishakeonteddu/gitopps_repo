@@ -41,7 +41,7 @@ jobs:
           secret_value: ${{ steps.ecr-password.outputs.password }} 
   
       - name: Save the ECR password1 secret
-        id: save-secret
+        id: save-secret1
         uses: Skandalik/save-secret@v1.0.0
         with:
           github_token: ${{ secrets.GH_API_ACCESS_TOKEN }}
