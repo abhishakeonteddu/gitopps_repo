@@ -67,8 +67,8 @@ jobs:
           kubectl get ns
           kubectl config get-contexts
           kubectl delete secret awsregcred -n default 
-          kubectl create secret docker-registry  awsregcred  --docker-server=https://443247825008.dkr.ecr.us-east-1.amazonaws.com --docker-username=AWS --docker-password=${{ secrets.ECR_PASSWORD}} -n default
-          kubectl create secret docker-registry  awsregcred1  --docker-server=https://443247825008.dkr.ecr.us-east-1.amazonaws.com --docker-username=AWS --docker-password=${{ secrets.ECR_PASSWORD1}} -n default
+          kubectl create secret docker-registry  awsregcred  --docker-server=https://443247825008.dkr.ecr.us-east-1.amazonaws.com --docker-username=AWS --docker-password=${{ secrets.ECR_PASSWORD }} -n default
+          kubectl create secret docker-registry  awsregcred1  --docker-server=https://443247825008.dkr.ecr.us-east-1.amazonaws.com --docker-username=AWS --docker-password=${{ secrets.ECR_PASSWORD1 }} -n default
           kubectl get secret -n default
 
 
