@@ -31,6 +31,10 @@ jobs:
       - name: Get current ECR password
         id: ecr-password
         run: echo "::set-output name=password::$(aws ecr get-login-password)"
+        
+      - name: Get current ECR password
+        id: Kube-secret
+        run: echo "::set-output name=password::$(aws ecr get-login-password)"
 
       - name: Save the ECR password secret
         id: save-secret
