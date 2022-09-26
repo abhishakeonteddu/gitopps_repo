@@ -97,7 +97,7 @@ jobs:
       #    KUBE_CONFIG_DATA: ${{ env.KUBE_CONFIG_DATA }}
         with:
           plugins: "https://github.com/jkroepke/helm-secrets" # optional
-          command: helm secrets upgrade helm-example --install --wait ./gitopps_repo/charts/helm-example/  -f ./gitopps_repo/charts/helm-example/values.yaml      
+          command: helm secrets upgrade helm-example --install --wait /gitopps_repo/charts/helm-example/  -f /gitopps_repo/charts/helm-example/values.yaml      
   
       
           
