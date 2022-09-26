@@ -85,11 +85,16 @@ jobs:
           kubectl delete secret awsregcred1 -n default 
           kubectl create secret docker-registry  awsregcred1  --docker-server=https://443247825008.dkr.ecr.us-east-1.amazonaws.com --docker-username=AWS --docker-password=${{ secrets.ECR_PASSWORD1 }} -n default
           kubectl get secret -n defaut
-
+          
+      - name: kubeconfing
+        run: |
+          aws eks update-kubeconfig --name ${{ env.CLUSTER_NAME }} --region ${{ env.AWS_REGION }}
+          echo "KUBE_CONFIG_DATA=$(cat ~/.kube/config | base64)" >> $GITHUB_ENV
+          
       - name: helm deploy
         uses: koslib/helm-eks-action@master
         env:
-          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG }}
+          KUBE_CONFIG_DATA: ${{ env.KUBE_CONFIG_DATA }}
         with:
           #plugins: "https://github.com/jkroepke/helm-secrets" # optional
           command: helm secrets upgrade helm-example --install --wait ./gitopps_repo/charts/helm-example/  -f ./gitopps_repo/charts/helm-example/values.yaml      
