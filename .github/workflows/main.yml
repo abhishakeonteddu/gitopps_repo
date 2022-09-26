@@ -85,17 +85,14 @@ jobs:
           kubectl delete secret awsregcred1 -n default 
           kubectl create secret docker-registry  awsregcred1  --docker-server=https://443247825008.dkr.ecr.us-east-1.amazonaws.com --docker-username=AWS --docker-password=${{ secrets.ECR_PASSWORD1 }} -n default
           kubectl get secret -n defaut
-      - name: 'Deploy'
-        uses: 'deliverybot/helm@master'
-        with:
-          token: '${{ github.token }}'
-          chart: 'sampleapplication'
-          namespace: dev
-          release: helm-example
-          value-files: './charts/helm-example/values.yaml'
+
+      - name: helm deploy
+        uses: koslib/helm-eks-action@master
         env:
-          KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG }}'
-          
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG }}
+        with:
+          #plugins: "https://github.com/jkroepke/helm-secrets" # optional
+          command: helm secrets upgrade helm-example --install --wait ./gitopps_repo/charts/helm-example/  -f ./gitopps_repo/charts/helm-example/values.yaml      
   
       
           
