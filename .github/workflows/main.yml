@@ -60,7 +60,21 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION}}
 #          role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
 
+
+      - name: Get current kubecobfig file
+        id: kubeconfig1
+        run: echo "::set-output name=kubeconfig::$(aws eks update-kubeconfig --name ${{ secrets.AWS_CLUSTER_NAME }} --region=${{ secrets.AWS_REGION }})"
+        
+      - name: Save the kubconfig file in secret
+        id: save-secret2
+        uses: Skandalik/save-secret@v1.0.0
+        with:
+          github_token: ${{ secrets.GH_API_ACCESS_TOKEN }}
+          secret_name: KUBE_CONFIG
+          secret_value: ${{ steps.kubeconfig1.outputs.kubeconfig }}  
+
       - name: Update KubeConfig
+        id: kubeconfig
         shell: bash
         run: |
           aws eks update-kubeconfig --name ${{ secrets.AWS_CLUSTER_NAME }} --region=${{ secrets.AWS_REGION }}
@@ -70,7 +84,9 @@ jobs:
           kubectl create secret docker-registry  awsregcred  --docker-server=https://443247825008.dkr.ecr.us-east-1.amazonaws.com --docker-username=AWS --docker-password=${{ secrets.ECR_PASSWORD }} -n default
           kubectl delete secret awsregcred1 -n default 
           kubectl create secret docker-registry  awsregcred1  --docker-server=https://443247825008.dkr.ecr.us-east-1.amazonaws.com --docker-username=AWS --docker-password=${{ secrets.ECR_PASSWORD1 }} -n default
-          kubectl get secret -n default
+          kubectl get secret -n defaut
+          
+       
 
 
 
