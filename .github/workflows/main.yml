@@ -80,36 +80,14 @@ jobs:
           aws eks update-kubeconfig --name ${{ secrets.AWS_CLUSTER_NAME }} --region=${{ secrets.AWS_REGION }}
           kubectl get ns
           kubectl config get-contexts
-          kubectl delete secret awsregcred -n default 
-          kubectl create secret docker-registry  awsregcred  --docker-server=https://443247825008.dkr.ecr.us-east-1.amazonaws.com --docker-username=AWS --docker-password=${{ secrets.ECR_PASSWORD }} -n default
+
+          kubectl create secret docker-registry  regcred  --docker-server=https://443247825008.dkr.ecr.us-east-1.amazonaws.com --docker-username=AWS --docker-password=${{ secrets.ECR_PASSWORD }} -n dev
           kubectl delete secret awsregcred1 -n default 
           kubectl create secret docker-registry  awsregcred1  --docker-server=https://443247825008.dkr.ecr.us-east-1.amazonaws.com --docker-username=AWS --docker-password=${{ secrets.ECR_PASSWORD1 }} -n default
           kubectl get secret -n defaut
+      
           
-       
-
-
-
-
-
-
-#on:
-#  push:
-#    branches:
-#      - 'main'
-
-#jobs:
-#  ecr_login:
- #   runs-on: ubuntu-latest
- #   outputs:
- #     ecr_password: ${{ steps.retrieve_password.outputs.ecr_password }}
- #   steps:
- #     - name: Set up AWS CLI
- #       uses: chrislennon/action-aws-cli@1.1
- #     - id: retrieve_password
- #       name: Retrieve ECR password and store as secret
- #       env:
- #         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
- #         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
- #         AWS_DEFAULT_REGION: us-east-1
- #       run: echo "::set-output name=ecr_password::$(aws ecr get-login-password)"
+          
+          
+          
+          
