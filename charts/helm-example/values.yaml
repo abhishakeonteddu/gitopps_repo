@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   pullPolicy: IfNotPresent
   repository: ghcr.io/abhishakeonteddu/gitops-argocd
-  version: main
+  version: master
 
 imagePullSecrets: 
    - name: dockerconfigjson-github-com
