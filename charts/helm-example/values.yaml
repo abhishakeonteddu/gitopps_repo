@@ -9,8 +9,7 @@ image:
   repository: ghcr.io/abhishakeonteddu/gitops-argocd
   version: master
 
-imagePullSecrets: 
-   - name: dockerconfigjson-github-com
+
 nameOverride: ""
 fullnameOverride: ""
 
