@@ -6,11 +6,11 @@ replicaCount: 1
 
 image:
   pullPolicy: IfNotPresent
-  repository: 443247825008.dkr.ecr.us-east-1.amazonaws.com/gitops-argocd
-  version: main-522e889
+  repository: ghcr.io/abhishakeonteddu/gitops-argocd
+  version: main
 
 imagePullSecrets: 
-   - name: regcred
+   - name: dockerconfigjson-github-com
 nameOverride: ""
 fullnameOverride: ""
 
