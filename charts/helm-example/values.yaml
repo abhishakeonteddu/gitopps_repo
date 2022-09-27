@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   repository: ghcr.io/abhishakeonteddu/gitops-argocd
   version: master
 
