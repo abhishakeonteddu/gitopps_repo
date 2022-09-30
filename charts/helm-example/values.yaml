@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   pullPolicy: Always
   repository: ghcr.io/abhishakeonteddu/gitops-argocd
-  version: master-f8438c1
+  version: master-45d19f3
 
 
 nameOverride: ""
